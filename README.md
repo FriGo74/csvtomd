@@ -2,6 +2,15 @@
 
 # [» Now online: csvtomd.com »](https://csvtomd.com)
 
+> **Community-maintained fork.** This is a fork of the original
+> [mplewis/csvtomd](https://github.com/mplewis/csvtomd) by Matthew Lewis,
+> unmaintained since 2020. This fork keeps the original MIT license and
+> authorship intact and modernizes it for current Python (3.8–3.13): packaging
+> moves from `setup.py` (which read a nonexistent `README.rst`) to
+> `pyproject.toml`, a flaky glob/`zip`-based test was made deterministic (and
+> now actually exercises the `padding=1` fixture), and CI runs on 3.8–3.13. The
+> CLI and API are unchanged.
+
 **The Python project is discontinued**
 
 Thanks for all your contributions! At this time I'm not continuing development on the Python version of this tool.

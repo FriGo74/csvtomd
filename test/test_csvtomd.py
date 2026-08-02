@@ -1,13 +1,12 @@
 from csvtomd.csvtomd import (
     pad_to, normalize_cols, pad_cells, horiz_div, add_dividers, md_table,
-    csv_to_table
+    csv_to_table, DEFAULT_PADDING
 )
 
 import pytest
 import sure  # noqa
 
 import csv
-from glob import glob
 from io import StringIO
 
 
@@ -79,12 +78,18 @@ def test_add_dividers():
     output.should.equal(expected)
 
 
-csvs = glob('test/input/*.csv')
-mds = glob('test/output/*.md')
-@pytest.mark.parametrize('csv,md', zip(csvs, mds))
-def test_md_table(csv, md):
+# Explicit (input, expected, padding) cases. The previous version zipped
+# glob() results, whose order is filesystem-dependent, so the input/expected
+# pairing was non-deterministic and the padding=1 fixture was never exercised
+# with the right padding.
+@pytest.mark.parametrize('csv,md,padding', [
+    ('test/input/normal.csv', 'test/output/normal.md', DEFAULT_PADDING),
+    ('test/input/jagged.csv', 'test/output/jagged.md', DEFAULT_PADDING),
+    ('test/input/normal.csv', 'test/output/normal_pad1.md', 1),
+])
+def test_md_table(csv, md, padding):
     table = read_csv(csv)
-    output = md_table(table)
+    output = md_table(table, padding=padding)
     expected = read_file(md).rstrip('\n')
     output.should.equal(expected)
 

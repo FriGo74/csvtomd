@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csvtomd"
+version = "0.4.0"
+description = "Convert your CSV files into Markdown tables (community-maintained fork)."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE.md" }
+keywords = ["csv", "markdown", "table", "convert"]
+authors = [{ name = "Matthew Lewis", email = "matt@mplewis.com" }]
+maintainers = [{ name = "FriGo74" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Natural Language :: English",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: Markup",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "sure"]
+
+[project.scripts]
+csvtomd = "csvtomd:main"
+
+[project.urls]
+Homepage = "https://github.com/FriGo74/csvtomd"
+"Original project" = "https://github.com/mplewis/csvtomd"
+
+[tool.setuptools]
+packages = ["csvtomd"]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]

@@ -146,7 +146,9 @@ def main():
         if filename == '-':
             table = csv_to_table(sys.stdin, args.delimiter)
         else:
-            with open(filename, 'rU') as f:
+            # The 'U' (universal newlines) mode flag was removed in Python 3.11;
+            # newline='' is the csv module's recommended way to open input files.
+            with open(filename, newline='') as f:
                 table = csv_to_table(f, args.delimiter)
         # Print filename for each table if --no-filenames wasn't passed and
         # more than one CSV was provided

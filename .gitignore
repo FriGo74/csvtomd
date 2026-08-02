@@ -2,3 +2,10 @@ csvtomd.egg-info
 build
 dist
 .cache
+
+.venv
+.venv*
+dist/
+build/
+*.egg-info/
+.pytest_cache/
