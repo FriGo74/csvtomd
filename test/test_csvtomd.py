@@ -102,6 +102,10 @@ csv_pounds = """
 a#b#c#d
 w#x#y#z
 """.strip()
+def test_md_table_empty():
+    md_table([]).should.equal('')
+
+
 def test_csv_to_table():
     expected = [['a', 'b', 'c', 'd'], ['w', 'x', 'y', 'z']]
     output = csv_to_table(StringIO(csv_normal), ',')

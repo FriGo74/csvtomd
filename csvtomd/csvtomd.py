@@ -89,6 +89,8 @@ def md_table(table, *, padding=DEFAULT_PADDING, divider='|', header_div='-'):
     header_div: the horizontal divider to place between the header row and
         body cells
     """
+    if not table:
+        return ''
     table = normalize_cols(table)
     table = pad_cells(table)
     header = table[0]
